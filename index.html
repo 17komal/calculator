@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+
+            background-color: aliceblue;
+        }
+.calc-header{
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+}
+.calc-body {
+    width: 275px;
+    margin: auto;
+    min-height: 400px;
+    box-shadow: 0 8px 50px -7px black;
+    background: #3A4655;
+    margin-top: 4%;
+}
+/*Calculator Display Screen*/
+.calc-screen {
+    padding: 1rem;
+}
+#calc-operation {
+    font-size: 1.3rem;
+    text-align: right;
+    color: #727B86;
+    padding-bottom: .5rem;
+}
+#calc-typed {
+    font-size: 2rem;
+    text-align: right;
+    color: #fff;
+}
+/*Calculator Buttons*/
+.calc-button-row{
+    display: table;
+}
+.calc-button-row button {
+    display: table-cell;
+    width: 25%;
+    background: #425062;
+    color: #fff;
+    height: 65px;
+    font-size: 1.3rem;
+    border: none;
+    border-color:#3C4857;
+    border-width: 1px 1px 0px 0;
+    border-style: solid;
+}
+.calc-button-row button.ac {
+    color: #ff7665;
+}
+.calc-button-row button.opt {
+    color: #ffbc56;
+}
+/*The border has been managed in every fourth button so that the design will not distract.*/
+.calc-button-row button:nth-child(4n){
+    border-right: none;
+}
+.calc-button-row button:active {
+    position: relative;
+    top: 1px;
+}
+.calc-button-row button:hover {
+    background: #3e4b5c;
+}
+    </style>
+</head>
+<body>
+    <div class="calc-header">
+    <h3>CALCULATOR</h3>
+    </div>
+    <div class="calc-body">
+
+        <!-- Calculator Display Screen -->
+        <div class="calc-screen">
+            <div id="calc-operation"> </div>
+            <div id="calc-typed"> </div>
+        </div>
+        
+        <!-- Calculator Buttons -->
+        <div class="calc-button-row">     
+            <button onclick="clean();" class="opt">AC</button>
+            <button onclick="display('+');" class="opt">+/−</button>
+            <button onclick="display('%');" class="opt">%</button>
+            <button onclick="display('/');" class="opt">/</button>
+            <button onclick="display('7');">7</button>
+            <button onclick="display('8');">8</button>
+            <button onclick="display('9');">9</button>
+            <button onclick="display('*');" class="opt">x</button>
+            <button onclick="display('4');">4</button>
+            <button onclick="display('5');">5</button>
+            <button onclick="display('6');">6</button>
+            <button onclick="display('-');" class="opt">-</button>
+            <button onclick="display('1');">1</button>
+            <button onclick="display('2');">2</button>
+            <button onclick="display('3');">3</button>
+            <button onclick="display('+');" class="opt">+</button>
+            <button onclick="display('0');">0</button>
+            <button onclick="display('.');">.</button>           
+            <button onclick="output();" class="opt">=</button>
+            <button onclick="back();">&#9003;</button>
+        </div>
+        </div>
+
+        <script>
+
+            function clean()
+            {
+                document.getElementById("calc-operation").innerHTML = '';
+                document.getElementById("calc-typed").innerHTML = " ";
+            }
+
+            function display(val)
+            {
+                var data = document.getElementById("calc-typed").innerHTML;
+                document.getElementById("calc-typed").innerHTML += val;    
+            }
+
+            function output()
+            {
+                document.getElementById("calc-operation").innerHTML = '';
+                var ques = document.getElementById("calc-typed").innerHTML;
+                var ans = eval(ques);
+                document.getElementById("calc-operation").innerHTML += ans;
+               // console.log(ans);
+            }
+            function back()
+            {
+                var ques = document.getElementById("calc-typed").innerHTML;
+                var newques = ques.slice(0, -1);
+                document.getElementById("calc-typed").innerHTML = newques;
+            }
+        </script>
+</body>
+</html>
